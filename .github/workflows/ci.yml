@@ -1,0 +1,66 @@
+name: CI
+
+# Runs on every push and pull request. Windows-only: the Python executor uses
+# Windows APIs (ctypes GlobalMemoryStatusEx in governor.py), so the checks must
+# run on windows-latest to exercise the real code paths.
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+# Cancel superseded runs on the same ref to save runner minutes.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  rust:
+    name: Rust (gateway)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache cargo registry + build
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            gateway/target
+          key: cargo-${{ runner.os }}-${{ hashFiles('gateway/Cargo.lock') }}
+          restore-keys: cargo-${{ runner.os }}-
+
+      - name: cargo test
+        run: cargo test --manifest-path gateway/Cargo.toml
+
+      - name: cargo build --release
+        run: cargo build --release --manifest-path gateway/Cargo.toml
+
+  python:
+    name: Python (executor + gates)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Executor tests (offline, no TouchDesigner)
+        run: python td_executor/tests/run_tests.py
+
+      - name: Registry consistency audit
+        run: python scripts/audit_registry_consistency.py
+
+      - name: Recipe integrity gate
+        run: python scripts/validate_recipes.py
+
+      - name: Integrity manifest is not stale
+        run: python scripts/gen_integrity_manifest.py --check

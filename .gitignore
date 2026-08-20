@@ -1,0 +1,42 @@
+# ── Rust gateway build artifacts ──────────────────────────────────────────────
+/gateway/target/
+**/target/
+*.pdb
+
+# ── Python caches ─────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# ── Internal working docs (not shipped) ──────────────────────────────────────
+docs/_*.md
+docs/_*.json
+docs/research/
+
+# ── Local dev workspace (not part of the package) ─────────────────────────────
+scratchpad/
+/assets/
+previews/
+media/
+cues/
+.claude/
+
+# ── Runtime / local config & secrets (live in the user profile) ───────────────
+arm.json
+*.token
+*.secret
+
+# ── Run logs ──────────────────────────────────────────────────────────────────
+*.log
+
+# ── OS / editor cruft ─────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# ── Local generated data (not distributed) ───────────────────────────────────
+reference/descriptions.json

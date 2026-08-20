@@ -1,0 +1,17 @@
+{
+  "_comment": "TEMPLATE -- copy the 'touchdesigner' block into your real claude_desktop_config.json (Windows: %APPDATA%\\Claude\\claude_desktop_config.json ; macOS: ~/Library/Application Support/Claude/claude_desktop_config.json), then replace BOTH <ABSOLUTE_PATH_TO_CLONE> placeholders with the absolute path to YOUR clone of this repo. Use forward slashes even on Windows. Delete this _comment key. Tip: run 'python scripts/setup.py' to have these paths filled in automatically for your machine.",
+  "_notes": {
+    "command": "Absolute path to the built gateway binary. On Windows it ends in .exe; on macOS/Linux drop the extension. The binary is at <clone>/gateway/target/release/touchdesigner-bridge-mcp[.exe].",
+    "TDMCP_GW_HEADLESS": "REQUIRED for an MCP client launch. The same binary is a GUI by default; this env var makes it serve MCP over stdio instead. Without it, Claude Desktop would open a window and the MCP handshake would never complete.",
+    "TDMCP_REPO": "Absolute path to your clone. Points the gateway at the bundled reference data (reference/recipes.json, reference/catalog.json) so operator/recipe lookups resolve deterministically."
+  },
+  "mcpServers": {
+    "touchdesigner": {
+      "command": "<ABSOLUTE_PATH_TO_CLONE>/gateway/target/release/touchdesigner-bridge-mcp.exe",
+      "env": {
+        "TDMCP_GW_HEADLESS": "1",
+        "TDMCP_REPO": "<ABSOLUTE_PATH_TO_CLONE>"
+      }
+    }
+  }
+}

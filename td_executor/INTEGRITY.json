@@ -1,0 +1,20 @@
+{
+  "algo": "sha256",
+  "files": {
+    "__init__.py": "2d5534aeec2ade2e15a7327451a7f80deb65cf96aad36981344052fda31b1710",
+    "expr_validator.py": "405120f95fbeea3f6fd09cadcfe95c3a5c941040c4a72c461dec78ab033c0502",
+    "glsl_validator.py": "1cb66128b3fda23f6032a67812890975b148a8295f80824a859f8c70cfbd19d6",
+    "governor.py": "d15dc5c7ff189b9fa93051279eff8c16ec1007438f600bb71fbbf537776e05c1",
+    "server.py": "8f39b45791ad819f9dd41d1d1f01f124fad436fa6d77463ed8462a1dfb844557",
+    "handlers/__init__.py": "8840f1adc9c7bed0396c58aa6f614cab968bf8c1ba677ac270b21d9f76652462",
+    "handlers/animation.py": "2c9df52f186fe8972a122d9621dfe6be31d64a336f2f72ce8488fcdd2651a71a",
+    "handlers/control.py": "3af42b9b34f7df954635f16caca8e0839aa488c3b9ae2d4c6e54537c75e64e31",
+    "handlers/device.py": "4cdc15ea59d15650611cdcd5ce89385aba15210c5b6b660cc5a2d29fe184dfa0",
+    "handlers/diagnostics.py": "1e75067407bddc5d9dac71291f1bd85e39ca8763ff72cf414afdcd91a77dba25",
+    "handlers/expr.py": "b66af7158c029cbc84bcc139166f68c91b0d8a02c4abd6dc60093ebe1d7f26bd",
+    "handlers/glsl.py": "310496a26b28f4e3b973b9c17df25bf354829a10e7f4e21728dfea7ad10c5d1b",
+    "handlers/io.py": "c4d540e8c56a4ecefddb9c196e783269db1cf7c146f640fa4fbb46cc734b7800",
+    "handlers/reference.py": "322b80dcbcbef289a8bc1521b826a65f76528f178a71c2cebf8c5034ec685594",
+    "handlers/scan.py": "83ff8f96a328e12d5a4ff3d3f8c5179b2af7bbb8b4c86ef5e31f5e8a92a271d1"
+  }
+}
